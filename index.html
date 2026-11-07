@@ -46,10 +46,10 @@ header{position:sticky;top:0;z-index:20;background:rgba(15,10,32,.86);backdrop-f
 .brand{font-family:var(--font-display);font-size:1.5rem;font-weight:700;text-decoration:none;letter-spacing:.02em;white-space:nowrap}
 .brand span{color:var(--gold)}
 .links{display:flex;gap:22px;align-items:center;list-style:none}
-.links a{text-decoration:none;font-size:.92rem;color:var(--mist);font-weight:600}
+.links a{text-decoration:none;font-size:.92rem;color:var(--mist);font-weight:600;white-space:nowrap}
 .links a:hover{color:var(--gold)}
 .menu-btn{display:none;background:none;border:1px solid rgba(217,182,111,.4);color:var(--gold);border-radius:8px;padding:8px 12px;font:inherit;font-weight:700;cursor:pointer}
-@media(max-width:900px){
+@media(max-width:1180px){
   .menu-btn{display:block}
   .links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--indigo);padding:8px 16px 16px;border-bottom:1px solid rgba(217,182,111,.25)}
   .links.open{display:flex}
@@ -115,14 +115,38 @@ header{position:sticky;top:0;z-index:20;background:rgba(15,10,32,.86);backdrop-f
 @media(max-width:860px){.feature-case{grid-template-columns:1fr;gap:32px;margin-top:48px}}
 @media(prefers-reduced-motion:reduce){.ring,.portrait,.portrait::before,.hero h1 em,.track,.flame{animation:none}.arch img{transition:none}.js .rv{opacity:1;transform:none;transition:none}}
 
+
+/* Plans */
+.demo-banner{display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between;border:1px dashed var(--gold);border-radius:18px;padding:22px 26px;margin-top:36px;background:rgba(217,182,111,.06)}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;margin-top:28px;align-items:stretch}
+.plan{position:relative;border-radius:22px;padding:34px 28px;display:flex;flex-direction:column;gap:12px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease}
+.plan h3{font-size:2.1rem}
+.plan .stars{letter-spacing:.3em;font-size:1rem}
+.plan .tagline{font-size:.95rem}
+.plan ul{list-style:none;display:grid;gap:10px;margin:6px 0 10px}
+.plan li{padding-left:26px;position:relative;font-size:.97rem}
+.plan li::before{content:"✦";position:absolute;left:0}
+.plan .price{font-family:var(--font-display);font-size:1.35rem;margin-top:auto}
+.plan:hover{transform:translateY(-6px)}
+.plan.basic{border:1px solid #a98748;background:linear-gradient(170deg,rgba(169,135,72,.16),rgba(26,19,64,.92));color:var(--moon)}
+.plan.basic .stars,.plan.basic li::before{color:#b8955a}.plan.basic .tagline{color:var(--mist)}.plan.basic .price{color:#c9a866}
+.plan.pro{border:2px solid #e8c777;background:linear-gradient(170deg,rgba(232,199,119,.3),rgba(43,32,88,.95) 72%);box-shadow:0 0 50px rgba(232,199,119,.22);color:var(--moon)}
+.plan.pro .stars,.plan.pro li::before{color:#f0d68e}.plan.pro .tagline{color:#d9d0ef}.plan.pro .price{color:#f0d68e}
+.plan.premium{border:1px solid #fff2c4;color:#24180a;background:linear-gradient(135deg,#8c6a2a 0%,#e9c978 22%,#fff1bc 45%,#cfa24d 68%,#f6dc92 88%,#a07a33 100%);box-shadow:0 0 70px rgba(255,226,140,.35)}
+.plan.premium::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:sweep 5s ease-in-out infinite;pointer-events:none}
+@keyframes sweep{55%,100%{transform:translateX(120%)}}
+.plan.premium .stars,.plan.premium li::before{color:#6b4a10}.plan.premium .tagline{color:#4a3411}.plan.premium .price{color:#3a2708}
+.btn-dark{background:#24180a;color:#f6dc92;border-color:#24180a}
+.btn-dark:hover{background:#3a2a12;transform:translateY(-2px)}
+@media(min-width:900px){.plan.pro{margin-top:-12px;margin-bottom:12px}}
+@media(prefers-reduced-motion:reduce){.plan.premium::before{animation:none;display:none}}
+
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 28px;font:700 .95rem var(--font-body);text-decoration:none;border:1px solid var(--gold);cursor:pointer;transition:transform .2s,background .2s,color .2s}
 .btn-gold{background:var(--gold);color:#1a1235}
 .btn-gold:hover{transform:translateY(-2px);background:#e8c985}
 .btn-ghost{background:transparent;color:var(--gold)}
 .btn-ghost:hover{background:rgba(217,182,111,.12)}
-.btn-wa{background:#1fa855;border-color:#1fa855;color:#fff}
-.btn-wa:hover{background:#25bd62}
 .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 
 /* Hero */
@@ -202,8 +226,7 @@ dialog h3{margin-bottom:6px}
 
 footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist);font-size:.9rem;background:rgba(15,10,32,.8)}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
-.wa-float{position:fixed;right:16px;bottom:16px;z-index:30;display:none}
-.wa-float.on{display:inline-flex;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.demo-float{position:fixed;right:16px;bottom:16px;z-index:30;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
 </head>
@@ -219,6 +242,7 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
       <li><a href="#cases">Cases</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#plans">Plans</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#book">Book</a></li>
       <li><a href="#dream">Dream reading</a></li>
@@ -244,7 +268,7 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
       </div>
       <div class="btn-row">
         <a class="btn btn-gold" href="#book">Book a consultation</a>
-        <a class="btn btn-wa wa-link" href="#contact">Book on WhatsApp</a>
+        <a class="btn btn-ghost" href="#book" data-plan="Free demo">Book a free demo</a>
         <a class="btn btn-ghost" href="#dream">Send me your dream</a>
       </div>
     </div>
@@ -286,7 +310,7 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
         <p class="lead">In Bayelsa State, in the Niger Delta region, Abraham took on the case that carried his name across West Africa.</p>
         <p style="color:var(--mist);margin-top:14px">By his account, the person was physically dead. Abraham used astral projection to reach the spirits of the dead, summoned them, and negotiated for the person's return to the body. The person awoke.</p>
         <p style="color:var(--mist);margin-top:14px">It was the first time many people heard his name. Clients have come from across the region and beyond ever since.</p>
-        <div class="btn-row"><a class="btn btn-gold" href="#book">Book a session</a><a class="btn btn-wa wa-link" href="#contact">Ask about your case</a></div>
+        <div class="btn-row"><a class="btn btn-gold" href="#book">Book a session</a><a class="btn btn-ghost" href="#book" data-plan="Free demo">Try a free demo</a></div>
       </div>
     </article>
 
@@ -314,7 +338,7 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
       <p class="lead">Abraham was a teenager when he first saw what people were carrying and told them plainly, without softening it. Fifteen years on, that directness is still the centre of his practice.</p>
       <p style="color:var(--mist);margin-top:16px">He is based in Africa, where dreams are treated as messages rather than noise. He listens past the words to the symbol beneath: a dream that keeps returning, a feeling that arrives before a decision, a blockage nobody can explain.</p>
       <p style="color:var(--mist);margin-top:16px">Along the way he has completed more than 80 psychic appointments, interpreted 20 dreams and worked through 12 cases of mental distortion. He is also known for the Bayelsa awakening, which carried his name across West Africa. <a href="#cases" style="color:var(--gold)">See the cases</a>.</p>
-      <div class="btn-row"><a class="btn btn-gold" href="#book">Book your session</a><a class="btn btn-wa wa-link" href="#contact">Message him now</a></div>
+      <div class="btn-row"><a class="btn btn-gold" href="#book">Book your session</a><a class="btn btn-ghost" href="#book" data-plan="Free demo">Try a free demo</a></div>
     </div>
   </div>
 </section>
@@ -372,12 +396,50 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
   </div>
 </section>
 
+<section id="plans">
+  <div class="wrap">
+    <p class="eyebrow">Plans</p>
+    <h2>Choose how deep you want to go</h2>
+    <p class="lead">Three plans, each one a step richer than the last. Start with a free demo if you would like to experience a session first.</p>
+    <div class="demo-banner">
+      <div><h3 style="font-size:1.6rem">Free demo</h3><p style="color:var(--mist)">Meet Abraham and feel how a session works before you pick a plan.</p></div>
+      <a class="btn btn-gold" href="#book" data-plan="Free demo">Book my free demo</a>
+    </div>
+    <div class="plans">
+      <article class="plan basic">
+        <span class="stars" aria-hidden="true">✦</span>
+        <h3>Basic</h3>
+        <p class="tagline">A single, focused session.</p>
+        <ul><li>One individual session</li><li>A psychic reading or a dream interpretation</li><li>Online by video or WhatsApp call</li></ul>
+        <p class="price">Price confirmed on booking</p>
+        <a class="btn btn-ghost" href="#book" data-plan="Basic">Choose Basic</a>
+      </article>
+      <article class="plan pro">
+        <span class="stars" aria-hidden="true">✦ ✦</span>
+        <h3>Pro</h3>
+        <p class="tagline">A deeper consultation.</p>
+        <ul><li>Everything in Basic</li><li>Spiritual consultation and soul alignment guidance</li><li>Individual or small group</li><li>Online or in person</li></ul>
+        <p class="price">Price confirmed on booking</p>
+        <a class="btn btn-gold" href="#book" data-plan="Pro">Choose Pro</a>
+      </article>
+      <article class="plan premium">
+        <span class="stars" aria-hidden="true">✦ ✦ ✦</span>
+        <h3>Premium</h3>
+        <p class="tagline">The full guidance experience.</p>
+        <ul><li>Everything in Pro</li><li>Readings, dreams and soul alignment in one consultation</li><li>Group sessions for families and circles</li><li>Priority booking</li></ul>
+        <p class="price">Price confirmed on booking</p>
+        <a class="btn btn-dark" href="#book" data-plan="Premium">Choose Premium</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="how">
   <div class="wrap">
     <p class="eyebrow">How it works</p>
     <h2>From first message to guidance</h2>
     <div class="steps">
-      <div class="step"><h3>Book a time</h3><p>Choose your service, session type and a date that suits you. Abraham confirms by WhatsApp.</p></div>
+      <div class="step"><h3>Book a time</h3><p>Choose your service, session type and a date that suits you. Abraham confirms by email.</p></div>
       <div class="step"><h3>Pay securely</h3><p>Once your slot is confirmed, you receive payment details for your session.</p></div>
       <div class="step"><h3>Meet</h3><p>Join by video call, WhatsApp call, or in person. Share your dream, question or situation.</p></div>
       <div class="step"><h3>Leave with direction</h3><p>You receive the interpretation and clear next steps you can act on.</p></div>
@@ -390,7 +452,7 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
     <div>
       <p class="eyebrow">Book</p>
       <h2>Reserve your consultation</h2>
-      <p class="lead">Fill in the form and your request goes straight to Abraham on WhatsApp. He replies to confirm the time and send payment details.</p>
+      <p class="lead">Fill in the form and the button at the end opens an email to Abraham with your request. He replies to confirm the time and send payment details.</p>
       <ul class="ticks">
         <li>Video consultations and WhatsApp calls for clients anywhere in the world</li>
         <li>In-person sessions for clients who can meet Abraham</li>
@@ -400,8 +462,10 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
     <form class="panel" id="bookForm" novalidate>
       <div class="two">
         <div class="field"><label for="b-name">Full name</label><input id="b-name" name="name" autocomplete="name" required></div>
-        <div class="field"><label for="b-contact">WhatsApp number or email</label><input id="b-contact" name="contact" autocomplete="off" required></div>
+        <div class="field"><label for="b-contact">Your email or phone number</label><input id="b-contact" name="contact" autocomplete="off" required></div>
       </div>
+      <div class="field"><label for="b-plan">Plan</label>
+        <select id="b-plan" name="plan"><option>Free demo</option><option>Basic</option><option>Pro</option><option>Premium</option></select></div>
       <div class="field"><label for="b-service">Service</label>
         <select id="b-service" name="service">
           <option>Dream interpretation</option><option>Psychic reading</option><option>Spiritual consultation</option><option>Soul alignment session</option><option>Other</option>
@@ -477,8 +541,8 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
       <p class="eyebrow">Contact</p>
       <h2>Ask a question first</h2>
       <p class="lead">Not sure which service fits? Send an enquiry and Abraham will point you to the right session.</p>
-      <div class="btn-row"><a class="btn btn-wa wa-link" id="waDirect" href="#contact">Chat on WhatsApp</a></div>
-      <ul class="contact-lines"><li>WhatsApp: <a href="https://wa.me/2349137039453">+234 913 703 9453</a></li><li>Email: <a href="mailto:lordstefan602@gmail.com">lordstefan602@gmail.com</a></li></ul>
+      <div class="btn-row"><a class="btn btn-gold" id="mailDirect" href="#contact">Email Abraham</a></div>
+      <ul class="contact-lines"><li>Email: <span id="mailText"></span></li></ul>
       <div class="panel" style="margin-top:32px">
         <h3 style="margin-bottom:6px">Stay in the loop</h3>
         <p class="note" style="margin:0 0 14px">Join the newsletter for dream guides and session openings.</p>
@@ -493,7 +557,7 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
     <form class="panel" id="contactForm" novalidate>
       <div class="two">
         <div class="field"><label for="c-name">Your name</label><input id="c-name" name="name" autocomplete="name" required></div>
-        <div class="field"><label for="c-contact">WhatsApp number or email</label><input id="c-contact" name="contact" required></div>
+        <div class="field"><label for="c-contact">Your email or phone number</label><input id="c-contact" name="contact" required></div>
       </div>
       <div class="field"><label for="c-msg">Your enquiry</label><textarea id="c-msg" name="message" style="min-height:170px" required></textarea></div>
       <button class="btn btn-gold" type="submit">Send enquiry</button>
@@ -513,7 +577,7 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
   <p class="wrap note" style="margin-top:18px;padding:0">Spiritual guidance only. Not a substitute for medical, mental health, legal or financial advice.</p>
 </footer>
 
-<a class="btn btn-wa wa-float" id="waFloat" href="#contact">Book on WhatsApp</a>
+<a class="btn btn-gold demo-float" href="#book" data-plan="Free demo">Free demo</a>
 
 <dialog id="profileDlg" aria-labelledby="pTitle">
   <button class="close" id="pClose" aria-label="Close">×</button>
@@ -521,7 +585,7 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
   <p class="note" style="margin:0 0 18px">Save your details on this device and they fill in automatically when you book.</p>
   <form id="profileForm">
     <div class="field"><label for="p-name">Full name</label><input id="p-name" autocomplete="name"></div>
-    <div class="field"><label for="p-contact">WhatsApp number or email</label><input id="p-contact"></div>
+    <div class="field"><label for="p-contact">Your email or phone number</label><input id="p-contact"></div>
     <div class="btn-row" style="margin-top:6px"><button class="btn btn-gold" type="submit">Save profile</button><button class="btn btn-ghost" type="button" id="pClear">Clear</button></div>
   </form>
 </dialog>
@@ -529,7 +593,6 @@ footer{border-top:1px solid rgba(217,182,111,.2);padding:40px 0;color:var(--mist
 <script>
 /* ---- Site settings: fill these in once Abraham confirms them ---- */
 const CONFIG = {
-  whatsapp: "2349137039453",  // digits only with country code
   paymentUrl: "",      // payment link (Paystack, Flutterwave, PayPal) shown after a booking request
   testimonials: []     // approved reviews: { text: "...", name: "...", service: "..." }
 };
@@ -543,23 +606,23 @@ const menuBtn = $('#menuBtn'), links = $('#links');
 menuBtn.addEventListener('click', () => { const o = links.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o); });
 links.addEventListener('click', e => { if (e.target.closest('a') && e.target.id !== 'profileBtn') { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); } });
 
-/* WhatsApp helpers */
-const waUrl = text => CONFIG.whatsapp ? 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(text) : null;
-if (CONFIG.whatsapp) {
-  const u = waUrl('Hello Abraham, I found your website and would like to ask a question.');
-  document.querySelectorAll('.wa-link').forEach(a => a.href = u);
-  $('#waFloat').href = u; $('#waFloat').classList.add('on');
-}
+/* Email helpers: the address is assembled here so it is not sitting in the page as plain text */
+const EMAIL = ['lordstefan602', 'gmail.com'].join('@');
+const SUBJECTS = {b: 'Booking request', d: 'Dream interpretation request', c: 'Website enquiry', r: 'Website review', n: 'Newsletter subscription'};
+const mailUrl = (subject, body) => 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+$('#mailText').textContent = EMAIL;
+$('#mailDirect').href = mailUrl('Website enquiry', 'Hello Abraham,\n\nI found your website and would like to ask a question.\n');
+document.querySelectorAll('[data-plan]').forEach(a => a.addEventListener('click', () => { $('#b-plan').value = a.dataset.plan; }));
 
 /* Show the composed message with a send button */
 function deliver(prefix, title, text, extraHtml) {
   const box = $('#' + prefix + '-result');
-  const u = waUrl(text);
+  const subject = prefix === 'b' ? 'Booking request: ' + $('#b-plan').value : SUBJECTS[prefix];
   box.innerHTML = '<strong>' + esc(title) + '</strong><pre>' + esc(text) + '</pre>' +
     '<div class="btn-row" style="margin-top:0">' +
-    (u ? '<a class="btn btn-wa" href="' + u + '">Send on WhatsApp</a>' : '') +
+    '<a class="btn btn-gold" href="' + esc(mailUrl(subject, text)) + '">Send by email</a>' +
     '<button type="button" class="btn btn-ghost" data-copy>Copy message</button></div>' +
-    (u ? '' : '<p class="note">Copy the message and send it to Abraham directly.</p>') +
+    '<p class="note">If your email app does not open, copy the message and send it to ' + esc(EMAIL) + '.</p>' +
     (extraHtml || '');
   box.hidden = false;
   box.querySelector('[data-copy]').addEventListener('click', async e => {
@@ -592,7 +655,7 @@ $('#bookForm').addEventListener('submit', e => {
   const v = n => f.elements[n].value.trim();
   const text = ['Hello Abraham, I would like to book a consultation.', '',
     'Name: ' + v('name'), 'Contact: ' + v('contact'), 'Service: ' + v('service'),
-    'Session: ' + f.elements.type.value + ', ' + f.elements.mode.value,
+    'Plan: ' + f.elements.plan.value, 'Session: ' + f.elements.type.value + ', ' + f.elements.mode.value,
     'Preferred time: ' + v('date') + ' at ' + v('time'),
     v('notes') ? 'Notes: ' + v('notes') : ''].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n').trim();
   const pay = CONFIG.paymentUrl ? '<p class="note">After Abraham confirms your slot, <a href="' + esc(CONFIG.paymentUrl) + '" style="color:var(--gold)">pay for your session here</a>.</p>' : '<p class="note">Abraham sends payment details when he confirms your slot.</p>';
@@ -661,12 +724,12 @@ list.innerHTML = CONFIG.testimonials.length
 /* Scroll reveal, counters and card glow */
 (function(){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.card,.tile,.fact,.step,.panel,.collage img,.feature-case>*,h2,.lead,.eyebrow').forEach(el => {
+  document.querySelectorAll('.card,.tile,.plan,.fact,.step,.panel,.collage img,.feature-case>*,h2,.lead,.eyebrow').forEach(el => {
     el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
   });
   if (reduce || !('IntersectionObserver' in window)) return;
   document.documentElement.classList.add('js');
-  const targets = document.querySelectorAll('main section:not(.hero) :is(.card,.tile,.fact,.step,.panel,.collage img,.feature-case>*,h2,.lead,.eyebrow,.stats>*)');
+  const targets = document.querySelectorAll('main section:not(.hero) :is(.card,.tile,.plan,.fact,.step,.panel,.collage img,.feature-case>*,h2,.lead,.eyebrow,.stats>*)');
   targets.forEach(el => { el.classList.add('rv'); const sibs = [...el.parentElement.children]; el.style.transitionDelay = Math.min(sibs.indexOf(el), 5) * 110 + 'ms'; });
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: .12});
   targets.forEach(el => io.observe(el));
